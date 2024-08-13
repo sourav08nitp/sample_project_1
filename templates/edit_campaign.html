@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Campaign</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Influencer Platform</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('sponsor_dashboard') }}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('create_campaign') }}">Create Campaign</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('ad_requests') }}">Ad Requests</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5 pt-4">
+        <h1>Edit Campaign</h1>
+        <form method="POST" class="mt-4">
+            <div class="form-group">
+                <label for="name">Campaign Name:</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ campaign.name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" name="description" rows="3" required>{{ campaign.description }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="start_date">Start Date:</label>
+                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ campaign.start_date }}">
+            </div>
+
+            <div class="form-group">
+                <label for="end_date">End Date:</label>
+                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ campaign.end_date }}">
+            </div>
+
+            <div class="form-group">
+                <label for="budget">Budget:</label>
+                <input type="number" class="form-control" id="budget" name="budget" step="0.01" value="{{ campaign.budget }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="visibility">Visibility:</label>
+                <select class="form-control" id="visibility" name="visibility">
+                    <option value="public" {% if campaign.visibility %}selected{% endif %}>Public</option>
+                    <option value="private" {% if not campaign.visibility %}selected{% endif %}>Private</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="niche">Niche:</label>
+                <input type="text" class="form-control" id="niche" name="niche" value="{{ campaign.niche }}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

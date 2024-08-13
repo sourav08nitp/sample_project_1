@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Ad Request</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Influencer Platform</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('sponsor_dashboard') }}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('create_campaign') }}">Create Campaign</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('manage_ad_requests') }}">Manage Ad Requests</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('send_ad_request') }}">Send Ad Request</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5 pt-4">
+        <h1>Edit Ad Request</h1>
+        <form method="POST" class="mt-4">
+            <div class="form-group">
+                <label for="campaign_id">Campaign:</label>
+                <select class="form-control" id="campaign_id" name="campaign_id" required>
+                    {% for campaign in campaigns %}
+                    <option value="{{ campaign.id }}" {% if ad_request.campaign_id == campaign.id %}selected{% endif %}>{{ campaign.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="influencer_id">Influencer:</label>
+                <select class="form-control" id="influencer_id" name="influencer_id" required>
+                    {% for influencer in influencers %}
+                    <option value="{{ influencer.id }}" {% if ad_request.influencer_id == influencer.id %}selected{% endif %}>{{ influencer.username }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="messages">Messages:</label>
+                <textarea class="form-control" id="messages" name="messages" rows="3" required>{{ ad_request.messages }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="requirements">Requirements:</label>
+                <textarea class="form-control" id="requirements" name="requirements" rows="3" required>{{ ad_request.requirements }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="payment_amount">Payment Amount:</label>
+                <input type="number" class="form-control" id="payment_amount" name="payment_amount" step="0.01" value="{{ ad_request.payment_amount }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select class="form-control" id="status" name="status" required>
+                    <option value="Pending" {% if ad_request.status == 'Pending' %}selected{% endif %}>Pending</option>
+                    <option value="Accepted" {% if ad_request.status == 'Accepted' %}selected{% endif %}>Accepted</option>
+                    <option value="Rejected" {% if ad_request.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

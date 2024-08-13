@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Sponsor Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-header text-center">
+    <h1>Sponsor Dashboard</h1>
+    <p>Welcome, Sponsor</p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">My Campaigns</h5>
+                <p class="card-text">View and manage your campaigns.</p>
+                <a href="{{ url_for('my_campaigns') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Influencer Collaboration</h5>
+                <p class="card-text">View and manage your influencer collaborations.</p>
+                <a href="{{ url_for('influencer_collaboration') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Analytics</h5>
+                <p class="card-text">View campaign analytics.</p>
+                <a href="{{ url_for('analytics') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Create New Campaign</h5>
+                <p class="card-text">Create a new advertising campaign.</p>
+                <a href="{{ url_for('create_campaign') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Manage Ad Requests</h5>
+                <p class="card-text">View and manage your ad requests.</p>
+                <a href="{{ url_for('ad_requests') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Search for Influencers</h5>
+                <p class="card-text">Find influencers based on niche and reach.</p>
+                <a href="{{ url_for('search_influencers') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Send Ad Request</h5>
+                <p class="card-text">Send a new ad request to an influencer.</p>
+                <a href="{{ url_for('send_ad_request') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

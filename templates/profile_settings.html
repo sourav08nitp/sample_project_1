@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Profile Settings</title>
+</head>
+<body>
+    <header>
+        <h1>Profile Settings</h1>
+    </header>
+    <div class="container">
+        <form method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" class="form-control" value="{{ user.username }}" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" value="{{ user.password }}" required>
+            </div>
+            {% if user.role == 'Influencer' %}
+            <div class="form-group">
+                <label for="niche">Niche:</label>
+                <input type="text" name="niche" id="niche" class="form-control" value="{{ user.niche }}">
+            </div>
+            <div class="form-group">
+                <label for="reach">Reach:</label>
+                <input type="number" name="reach" id="reach" class="form-control" value="{{ user.reach }}">
+            </div>
+            {% endif %}
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</body>
+</html>

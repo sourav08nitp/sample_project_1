@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-header text-center">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome, Admin</p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Manage Users</h5>
+                <p class="card-text">View and manage all users.</p>
+                <a href="{{ url_for('manage_users') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Manage Campaigns</h5>
+                <p class="card-text">View and manage all campaigns.</p>
+                <a href="{{ url_for('manage_campaigns') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Manage Ad Requests</h5>
+                <p class="card-text">View and manage all ad requests.</p>
+                <a href="{{ url_for('manage_ad_requests') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Analytics</h5>
+                <p class="card-text">View site analytics.</p>
+                <a href="{{ url_for('admin_analytics') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Flagged Users</h5>
+                <p class="card-text">View and manage flagged users.</p>
+                <a href="{{ url_for('manage_flagged_users') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Settings</h5>
+                <p class="card-text">Adjust site settings.</p>
+                <a href="{{ url_for('admin_settings') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center mt-4">
+    <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+</div>
+{% endblock %}

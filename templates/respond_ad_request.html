@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Respond to Ad Request{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Respond to Ad Request</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="payment_amount">Payment Amount:</label>
+            <input type="number" class="form-control" name="payment_amount" id="payment_amount" step="0.01" value="{{ ad_request.payment_amount }}" required>
+        </div>
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select class="form-control" name="status" id="status">
+                <option value="Pending" {% if ad_request.status == 'Pending' %}selected{% endif %}>Pending</option>
+                <option value="Accepted" {% if ad_request.status == 'Accepted' %}selected{% endif %}>Accepted</option>
+                <option value="Rejected" {% if ad_request.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

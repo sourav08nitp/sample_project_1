@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Campaigns{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Manage Campaigns</h1>
+    <ul class="list-group">
+        {% for campaign in campaigns %}
+            <li class="list-group-item">
+                <strong>{{ campaign.name }}</strong> - {{ campaign.description }}<br>
+                <a href="{{ url_for('admin_edit_campaign', id=campaign.id) }}" class="btn btn-secondary btn-sm">Edit</a>
+                <form action="{{ url_for('admin_delete_campaign', id=campaign.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

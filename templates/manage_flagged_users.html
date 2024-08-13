@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Flagged Users{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Manage Flagged Users</h1>
+    <ul class="list-group">
+        {% for user in flagged_users %}
+            <li class="list-group-item">
+                <strong>{{ user.username }}</strong> - {{ user.role }}<br>
+                <a href="{{ url_for('edit_user', id=user.id) }}" class="btn btn-secondary btn-sm">Edit</a>
+                <form action="{{ url_for('delete_user', id=user.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+                <form action="{{ url_for('unflag_user', id=user.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-success btn-sm">Unflag</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

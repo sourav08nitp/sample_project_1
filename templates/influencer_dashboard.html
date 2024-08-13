@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Influencer Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-header text-center">
+    <h1>Influencer Dashboard</h1>
+    <p>Welcome, Influencer</p>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">My Ad Requests</h5>
+                <p class="card-text">View and manage your ad requests.</p>
+                <a href="{{ url_for('influencer_ad_requests') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Search Campaigns</h5>
+                <p class="card-text">Search for public campaigns.</p>
+                <a href="{{ url_for('search_campaigns') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Profile Settings</h5>
+                <p class="card-text">Update your profile settings.</p>
+                <a href="{{ url_for('profile_settings') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Analytics</h5>
+                <p class="card-text">View your analytics.</p>
+                <a href="{{ url_for('influencer_analytics') }}" class="btn btn-primary">Go</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Influencers{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Search Influencers</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">Name:</label>
+            <input type="text" class="form-control" name="username" id="username">
+        </div>
+        <div class="form-group">
+            <label for="niche">Niche:</label>
+            <input type="text" class="form-control" name="niche" id="niche">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    {% if influencers %}
+    <h2 class="mt-4">Results</h2>
+    <ul class="list-group">
+        {% for influencer in influencers %}
+        <li class="list-group-item">
+            <h5>{{ influencer.username }}</h5>
+            <p>Niche: {{ influencer.niche }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}

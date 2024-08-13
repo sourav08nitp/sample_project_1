@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Campaigns{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Search Campaigns</h1>
+    <form method="POST">
+        <label for="niche">Niche:</label>
+        <input type="text" name="niche" id="niche" required>
+        
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    {% if campaigns %}
+    <h2 class="mt-4">Results</h2>
+    <ul class="list-group">
+        {% for campaign in campaigns %}
+        <li class="list-group-item">
+            <h5>{{ campaign.name }}</h5>
+            <p>{{ campaign.description }}</p>
+            <p>Start Date: {{ campaign.start_date }}</p>
+            <p>End Date: {{ campaign.end_date }}</p>
+            <p>Budget: {{ campaign.budget }}</p>
+            <p>Niche: {{ campaign.niche }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}

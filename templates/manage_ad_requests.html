@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Ad Requests{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Manage Ad Requests</h1>
+    <a href="{{ url_for('send_ad_request') }}" class="btn btn-primary mb-3">Send New Ad Request</a>
+    <ul class="list-group">
+        {% for ad_request in ad_requests %}
+            <li class="list-group-item">
+                <strong>Campaign:</strong> {{ ad_request.campaign.name }}<br>
+                <strong>Influencer:</strong> {{ ad_request.influencer.username }}<br>
+                <strong>Status:</strong> {{ ad_request.status }}<br>
+                <strong>Messages:</strong> {{ ad_request.messages }}<br>
+                <strong>Requirements:</strong> {{ ad_request.requirements }}<br>
+                <strong>Payment Amount:</strong> ${{ ad_request.payment_amount }}<br>
+                <a href="{{ url_for('edit_ad_request', id=ad_request.id) }}" class="btn btn-secondary btn-sm">Edit</a>
+                <form action="{{ url_for('delete_ad_request', id=ad_request.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
